@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill Zone HQ</title>
+    <style>
+        body{
+          color: #e0e0e0;
+          align-items: center;
+          text-align: center;
+          background-color: #1a1a1a;
+          background-image: url('https://source.unsplash.com/random/1920x1080/?night');
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          
+        }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 15px 0;
+            text-decoration: underline;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .button {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.1rem;
+            margin: 10px 5px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.5s;
+            width: 90%; /* Ensures sections are not too wide */
+            max-width: 800px;/* Sets a maximum width for larger screens*/
+            position: relative; /* Ensures sections stack correctly */
+        }
+
+
+        .quote {
+            font-style: italic;
+            margin-top: 15px;
+            color: #FFD700; /* Gold color for the quote */
+        }
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Chill Zone HQ</h1>
+</header>
+
+<div class="section">
+    <h2>Welcome to your secret hideout!</h2>
+    <p>Your mission, should you choose to accept it, is to unwind, connect, and have fun with fellow agents.</p>
+    <a class="button" href="/room">Enter chat room</a>
+</div>
+
+<div class="section">
+    <h2>Secret Rooms</h2>
+    <p>Explore our classified sections for different activities!</p>
+    <a class="button" href="#game-room">The Game Room</a>
+    <a class="button" href="#meme-vault">The Meme Vault</a>
+    <a class="button" href="#movie-hq">Movie HQ</a>
+</div>
+
+<div class="section">
+    <h2>Upcoming Missions</h2>
+    <p>Check out our upcoming missions for fun activities and events!</p>
+    <a class="button" href="#events">View Calendar</a>
+</div>
+
+<div class="section">
+    <h2>Agent Profiles</h2>
+    <p>Each agent has a profile! Customize yours and let others know your secret identity.</p>
+    <a class="button" href="/AgentProfile">Access Your Profile</a>
+</div>
+
+<div class="section">
+    <h2>Quote of the Day</h2>
+    <p class="quote">"In a world of chaos, find your chill."</p>
+</div>
+
+<footer>
+    <p>For classified inquiries, reach out to HQ.</p>
+    <p>&copy; 2024 Chill Zone HQ. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

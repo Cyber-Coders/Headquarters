@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .chat-box {
+            width: 100%;
+            max-width: 1400px;
+            height: 500px; /* Fixed height to ensure scrolling */
+            overflow-y: auto; /* Add a vertical scrollbar when needed */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        
+        
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            outline: none;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .message, .notification {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease-in-out;
+            max-width: 100%;
+        }
+
+        .message.sent {
+            background-color: #3498db;
+            color: #ecf0f1;
+            align-self: flex-end;
+            text-align: left;
+            width: auto;
+            /* display: inline-block; */
+        }
+
+        .message.received {
+            background-color: #2ecc71;
+            color: #ecf0f1;
+            align-self: flex-start;
+            text-align: right;
+            width: auto;
+        }
+
+        .notification {
+            background-color: transparent;
+            color: #ecf0f1;
+            text-align: center;
+            font-style: italic;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <form id="chat-form" class="chat-form">
+            <input id="msg" type="text" placeholder="Type a message..." autocomplete="off">
+            <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Store the current username
+        let currentUser = '';
+
+        // Get chat-box and form elements
+        const chatBox = document.getElementById('chat-box');
+        const chatForm = document.getElementById('chat-form');
+        const msgInput = document.getElementById('msg');
+
+        // Receive the username from the server when the user connects
+        socket.on('setUsername', (username) => {
+            currentUser = username;
+            console.log(`Logged in as: ${currentUser}`);
+        });
+
+        // Listen for messages from the server
+        socket.on('message2', (messageData) => {
+            const div = document.createElement('div');
+            div.classList.add('message');
+            if(messageData.username == currentUser){
+                div.classList.add('sent')
+            div.innerHTML = `You: ${messageData.message}`;  // messageData already includes the username and message
+
+            }
+            else{
+                div.innerHTML = `${messageData.username}: ${messageData.message}`;
+                div.classList.add('recieved')
+            }
+              // messageData already includes the username and message
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        socket.on('message', (messageData) => {
+            const div = document.createElement('div');
+            div.classList.add('notification');
+            {
+               div.innerHTML = `${messageData.message}`;
+            }
+              // messageData already includes the username and message
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+
+        // Send message to server on form submit
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msg = msgInput.value;
+            socket.emit('chatMessage', {username:currentUser , message:msg}); // Send only the message text
+            msgInput.value = '';
+        });
+    </script>
+</body>
+
+</html>

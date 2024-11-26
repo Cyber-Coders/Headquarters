@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Society Headquarters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00cc99;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px; /* Adjust logo size */
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            border: none;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .btn-create-room {
+            margin: 20px auto;
+            display: block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-create-room:hover {
+            background: #218838;
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        .member-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .member-image:hover {
+            transform: scale(1.1); /* Image zoom on hover */
+        }
+
+        .about-section {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .motto {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffcc00; /* Golden color for motto */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Phoenix Society Headquarters</h1>
+    <img src="https://yt3.ggpht.com/ytc/AKedOLRYhDBonHMONa0w9I-CdA13U2rvYXX2n-kvDMsPrA=s900-c-k-c0x00ffffff-no-rj" alt="Phoenix Society Logo" class="logo">
+
+    <div class="container">
+        <div class="about-section">
+            <h2>About the Phoenix Society</h2>
+            <p>The Phoenix Society is a secret organization dedicated to fostering innovation, leadership, and collaboration among its members. We believe in rising from the ashes of adversity, creating a brighter future through unity and strength.</p>
+            <div class="motto">“From the ashes, we rise.”</div>
+        </div>
+
+        <div class="row">
+            <!-- Member 1: Raghav -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/random/300x200?face,man" class="member-image" alt="Raghav">
+                    <div class="card-body">
+                        <h5 class="card-title">Raghav</h5>
+                        <p class="card-text">He is the creator of this website and is the supreme leader of this supreme society.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2: Vansh -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/random/300x200?face,gentleman" class="member-image" alt="Vansh">
+                    <div class="card-body">
+                        <h5 class="card-title">Vansh</h5>
+                        <p class="card-text">He is a handsome gentleman and also the King of DSA.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3: Pranay -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/random/300x200?face,man" class="member-image" alt="Pranay">
+                    <div class="card-body">
+                        <h5 class="card-title">Pranay</h5>
+                        <p class="card-text">In short, he is our father and also our bhaiyaji.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-create-room" onclick="location.href='/Room';">Create Room</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
